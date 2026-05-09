@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3F8E6D" />
+  <meta name="description" content="Privacy Policy for Pomorix - Pomodoro Timer App." />
+  <title>Privacy Policy — Pomorix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6fbf8;
+      --surface: rgba(255,255,255,0.82);
+      --text: #103326;
+      --muted: #5b7067;
+      --brand: #3F8E6D;
+      --brand-dark: #2f6a52;
+      --line: rgba(16,51,38,0.10);
+      --shadow: 0 20px 60px rgba(35, 70, 54, 0.10);
+      --max: 980px;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(63,142,109,0.12), transparent 28%),
+        linear-gradient(180deg, #f9fcfa 0%, #eef6f1 100%);
+      min-height: 100vh;
+    }
+
+    a { color: var(--brand-dark); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: rgba(246,251,248,0.72);
+      border-bottom: 1px solid rgba(16,51,38,0.06);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #4ca57f, #2f6a52);
+      color: white;
+      box-shadow: 0 12px 28px rgba(63,142,109,0.25);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero {
+      padding: 40px 0 24px;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(63,142,109,0.10);
+      color: var(--brand-dark);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 80ch;
+    }
+
+    .content {
+      padding: 14px 0 46px;
+    }
+
+    .policy {
+      display: grid;
+      gap: 16px;
+    }
+
+    .section-card {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .section-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-card p,
+    .section-card li {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .section-card ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--brand);
+      padding-left: 16px;
+    }
+
+    .footer {
+      padding: 20px 0 40px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(16,51,38,0.08);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(var(--max), calc(100% - 24px)); }
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero-card, .section-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Back to Pomorix home">
+        <span class="brand-mark">
+          <img src="assets/logo.png" alt="Pomorix logo" onerror="this.style.display='none'; this.parentElement.textContent='P';" />
+        </span>
+        <span>Pomorix</span>
+      </a>
+      <a href="index.html">Back to website</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-card">
+        <span class="eyebrow">Privacy Policy</span>
+        <h1>Privacy Policy for Pomorix</h1>
+        <p class="lead">Effective date: 01 March 2026. This page explains how Pomorix collects, uses, stores, shares, and protects information when you use the app and related services. It is written to be easy to read while still covering the key rights and disclosures required by the attached policy draft. fileciteturn0file0</p>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="container policy">
+        <article class="section-card">
+          <h2>1. Introduction</h2>
+          <p>Pomorix (“we”, “us”, or “our”) is committed to protecting your privacy and personal data. This Privacy Policy explains what personal data we collect, why we collect it, how we use, store and share it, and the rights available to you under applicable Indian law, including the Digital Personal Data Protection Act, 2023 (“DPDP Act”) and related rules. By downloading, installing or using the App you accept the practices described in this Policy. If you do not agree, please do not use the App. fileciteturn0file0</p>
+        </article>
+
+        <div class="grid-2">
+          <article class="section-card">
+            <h2>2. Data Controller & Contact Information</h2>
+            <p>Data Controller: Pomorix, headquartered in Gujarat.</p>
+            <p style="margin-top:10px;">Grievance / Privacy contact: <a href="mailto:pomorixapp@gmail.com">pomorixapp@gmail.com</a></p>
+          </article>
+          <article class="section-card">
+            <h2>3. Scope & Applicability</h2>
+            <p>This Policy applies to personal data collected through the Pomorix mobile application on supported devices, and to services, support and communications associated with the App. fileciteturn0file0</p>
+          </article>
+        </div>
+
+        <article class="section-card">
+          <h2>4. Information We Collect</h2>
+          <div class="grid-2">
+            <div class="callout">
+              <p><strong style="color:var(--text);">Personal data you provide directly</strong></p>
+              <ul>
+                <li>Email address when you contact support or provide feedback.</li>
+                <li>Feedback, support messages and other text you submit via in-App forms or email.</li>
+                <li>Any optional information you choose to submit.</li>
+              </ul>
+            </div>
+            <div class="callout">
+              <p><strong style="color:var(--text);">Device & usage data (automatic)</strong></p>
+              <ul>
+                <li>Device identifiers and technical data such as device model, OS version, app version, package name, and build id.</li>
+                <li>Usage and analytics data such as session counts, duration, feature usage, and screens visited.</li>
+                <li>Crash reports, error logs and diagnostic data.</li>
+                <li>Local settings saved on your device such as language, theme, and timer settings.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-top:16px;">
+            <div class="callout">
+              <p><strong style="color:var(--text);">Local media and assets</strong></p>
+              <p>The App includes packaged background music and sound assets. We do not access your personal photos, audio or other media unless you explicitly enable a feature that requests such access. fileciteturn0file0</p>
+            </div>
+            <div class="callout">
+              <p><strong style="color:var(--text);">What we don’t collect by default</strong></p>
+              <p>Pomorix does not require an account to use core features. We do not collect names, postal addresses or sensitive personal data by default. fileciteturn0file0</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="section-card">
+          <h2>5. How We Use Your Data</h2>
+          <ul>
+            <li>Operating, providing and maintaining the App and its features.</li>
+            <li>Analyzing and improving the App, including analytics and crash reporting.</li>
+            <li>Responding to feedback and support requests.</li>
+            <li>Sending service messages or notifications where you have given required consent.</li>
+            <li>Complying with legal obligations and enforcing our rights.</li>
+          </ul>
+          <p style="margin-top:12px;">Where the law requires consent, you may withdraw that consent at any time without affecting prior processing. fileciteturn0file0</p>
+        </article>
+
+        <div class="grid-2">
+          <article class="section-card">
+            <h2>6. Third-Party Services & Sharing</h2>
+            <p>We use third-party service providers to host, operate and analyze the App, such as analytics, crash reporting, cloud messaging and distribution. We do not sell your personal data. fileciteturn0file0</p>
+          </article>
+          <article class="section-card">
+            <h2>7. Cross-Border Data Transfers</h2>
+            <p>Your device and usage data may be processed or stored outside India. Where data is transferred across borders, we apply appropriate contractual safeguards and rely on legal mechanisms available under applicable law. fileciteturn0file0</p>
+          </article>
+        </div>
+
+        <div class="grid-2">
+          <article class="section-card">
+            <h2>8. Data Retention</h2>
+            <p>We retain personal data only as long as needed for the purposes in this Policy or as required by law. Support requests, analytics, crash logs and local settings are retained only for the necessary period, and deletion requests are honored subject to legal obligations. fileciteturn0file0</p>
+          </article>
+          <article class="section-card">
+            <h2>9. Security</h2>
+            <p>We maintain reasonable administrative, technical and physical safeguards, including access controls, HTTPS, and vendor protections. No system can be guaranteed 100% secure. fileciteturn0file0</p>
+          </article>
+        </div>
+
+        <div class="grid-2">
+          <article class="section-card">
+            <h2>10. Children’s Privacy</h2>
+            <p>The App is not directed to children under 13, and we do not knowingly collect personal data from children under 13. If you believe we have collected such data, contact us and we will promptly delete it. fileciteturn0file0</p>
+          </article>
+          <article class="section-card">
+            <h2>11. Your Rights & How to Exercise Them</h2>
+            <p>Under applicable Indian law and DPDP principles, you may have rights including access, correction, erasure, and withdrawal of consent. Send requests to <a href="mailto:pomorixapp@gmail.com">pomorixapp@gmail.com</a> with the subject line “Privacy Request”. fileciteturn0file0</p>
+          </article>
+        </div>
+
+        <article class="section-card">
+          <h2>12. Grievance Officer / Complaints</h2>
+          <p>Email: <a href="mailto:pomorixapp@gmail.com">pomorixapp@gmail.com</a> (please include “Grievance” in the subject).</p>
+          <p style="margin-top:10px;">Location: Gujarat. We aim to acknowledge and address grievances promptly. fileciteturn0file0</p>
+        </article>
+
+        <div class="grid-2">
+          <article class="section-card">
+            <h2>13. Cookies & Similar Technologies</h2>
+            <p>The App is a native mobile application and does not use browser cookies in the same manner as websites. Third-party SDKs may use local storage or identifiers for analytics and crash reporting functionality. fileciteturn0file0</p>
+          </article>
+          <article class="section-card">
+            <h2>14. Legal Disclosures</h2>
+            <p>We may disclose personal data to comply with legal obligations, court orders or government requests, or to protect our rights, safety or property or that of other users. fileciteturn0file0</p>
+          </article>
+        </div>
+
+        <div class="grid-2">
+          <article class="section-card">
+            <h2>15. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. If changes are material, we will post the new version in the App and update the effective date. Continued use of the App after notice of changes means you accept the revised Policy. fileciteturn0file0</p>
+          </article>
+          <article class="section-card">
+            <h2>16. Governing Law & Dispute Resolution</h2>
+            <p>This Privacy Policy is governed by the laws of India. Any dispute arising out of or in connection with this Policy or the App shall be subject to the exclusive jurisdiction of the courts located in Ahmedabad. fileciteturn0file0</p>
+          </article>
+        </div>
+
+        <article class="section-card">
+          <h2>17. How to Contact Us</h2>
+          <p>If you have questions, concerns, or wish to exercise your privacy rights, contact us at <a href="mailto:pomorixapp@gmail.com">pomorixapp@gmail.com</a>. For grievances, include “Grievance” in the subject line. fileciteturn0file0</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="brand" style="margin-bottom:10px;">
+          <span class="brand-mark">
+            <img src="assets/logo.png" alt="" aria-hidden="true" onerror="this.style.display='none'; this.parentElement.textContent='P';" />
+          </span>
+          <span>Pomorix</span>
+        </div>
+        <div>Focus better. Work smarter. Build momentum.</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="https://play.google.com/store/apps/details?id=com.pomorix.app" target="_blank" rel="noopener noreferrer">Google Play</a>
+        <a href="mailto:pomorixapp@gmail.com">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
