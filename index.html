@@ -9,7 +9,7 @@
   <meta property="og:description" content="Focus better. Work smarter. Build momentum with Pomorix." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://your-username.github.io/pomorix-site/" />
-  <meta property="og:image" content="assets/og-cover.png" />
+  <meta property="og:image" content="assets/screenshot-1.png" />
   <title>Pomorix — Pomodoro Timer App</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -562,8 +562,7 @@
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="Pomorix Home">
         <span class="brand-badge">
-          <!-- Replace with your logo later: assets/logo.png -->
-          P
+          <img src="assets/logo.png" alt="Pomorix logo" onerror="this.style.display='none'; this.parentElement.textContent='P';" />
         </span>
         <span>Pomorix</span>
       </a>
@@ -611,12 +610,31 @@
             <div class="mock-screen">
               <div class="mock-brand">
                 <div class="mock-icon">
-                  <!-- Replace with logo image later if needed -->
-                  ⏱
+                  <img src="assets/logo.png" alt="Pomorix logo" onerror="this.style.display='none'; this.parentElement.textContent='⏱';" />
                 </div>
                 <div>
                   Pomorix
                   <div style="font-size:0.84rem;color:var(--muted);font-weight:600;margin-top:3px;">Pomodoro Timer App</div>
+                </div>
+              </div>
+
+              <div class="timer-ring">
+                <div class="timer-inner">
+                  <div class="time">25:00</div>
+                  <div class="label">Focus session ready</div>
+                </div>
+              </div>
+
+              <div class="mock-cards">
+                <div class="mini-card">
+                  <strong>Focus streak</strong>
+                  <div class="progress"><span style="width:78%"></span></div>
+                  <div style="margin-top:8px;color:var(--muted);font-size:0.9rem;">7 days in a row</div>
+                </div>
+                <div class="mini-card">
+                  <strong>Today's progress</strong>
+                  <div class="progress"><span style="width:62%"></span></div>
+                  <div style="margin-top:8px;color:var(--muted);font-size:0.9rem;">3 sessions completed</div>
                 </div>
               </div>
 
@@ -700,28 +718,28 @@
 
         <div class="gallery">
           <article class="shot">
-            <div class="shot-frame">Screenshot 1<br/>Homepage / Timer screen<br/>Replace with <code>assets/screenshot-1.png</code></div>
+            <div class="shot-frame"><img src="assets/screenshot-1.png" alt="Pomorix screenshot 1: homepage and timer screen" onerror="this.parentElement.innerHTML='Screenshot 1<br/>Homepage / Timer screen<br/>Missing <code>assets/screenshot-1.png</code>';" /></div>
             <div class="shot-caption">
               <strong>Focused home screen</strong>
               <span>Make the first impression clean, calm, and instantly understandable.</span>
             </div>
           </article>
           <article class="shot">
-            <div class="shot-frame">Screenshot 2<br/>Custom session setup<br/>Replace with <code>assets/screenshot-2.png</code></div>
+            <div class="shot-frame"><img src="assets/screenshot-2.png" alt="Pomorix screenshot 2: custom session setup" onerror="this.parentElement.innerHTML='Screenshot 2<br/>Custom session setup<br/>Missing <code>assets/screenshot-2.png</code>';" /></div>
             <div class="shot-caption">
               <strong>Custom timer controls</strong>
               <span>Show how users can change work and break durations to match their routine.</span>
             </div>
           </article>
           <article class="shot">
-            <div class="shot-frame">Screenshot 3<br/>Progress stats<br/>Replace with <code>assets/screenshot-3.png</code></div>
+            <div class="shot-frame"><img src="assets/screenshot-3.png" alt="Pomorix screenshot 3: progress statistics" onerror="this.parentElement.innerHTML='Screenshot 3<br/>Progress stats<br/>Missing <code>assets/screenshot-3.png</code>';" /></div>
             <div class="shot-caption">
               <strong>Progress and streaks</strong>
               <span>Highlight the productivity insights that help users stay committed.</span>
             </div>
           </article>
           <article class="shot">
-            <div class="shot-frame">Screenshot 4<br/>Ambient sounds / categories<br/>Replace with <code>assets/screenshot-4.png</code></div>
+            <div class="shot-frame"><img src="assets/screenshot-4.png" alt="Pomorix screenshot 4: ambient sounds and categories" onerror="this.parentElement.innerHTML='Screenshot 4<br/>Ambient sounds / categories<br/>Missing <code>assets/screenshot-4.png</code>';" /></div>
             <div class="shot-caption">
               <strong>Personalized focus tools</strong>
               <span>Let the screenshot gallery communicate depth without making the page feel cluttered.</span>
@@ -820,7 +838,7 @@
     <div class="container footer-box">
       <div>
         <div class="brand" style="margin-bottom:10px;">
-          <span class="brand-badge" aria-hidden="true">P</span>
+          <span class="brand-badge" aria-hidden="true"><img src="assets/logo.png" alt="" aria-hidden="true" onerror="this.style.display='none'; this.parentElement.textContent='P';" /></span>
           <span>Pomorix</span>
         </div>
         <div class="note">Focus better. Work smarter. Build momentum.</div>
