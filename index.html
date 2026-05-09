@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pomorix is a minimalist Pomodoro timer app for deep work, study sessions, and daily productivity." />
+  <meta name="theme-color" content="#3F8E6D" />
+  <meta property="og:title" content="Pomorix — Pomodoro Timer App" />
+  <meta property="og:description" content="Focus better. Work smarter. Build momentum with Pomorix." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-username.github.io/pomorix-site/" />
+  <meta property="og:image" content="assets/og-cover.png" />
+  <title>Pomorix — Pomodoro Timer App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6fbf8;
+      --surface: rgba(255,255,255,0.72);
+      --surface-strong: #ffffff;
+      --text: #103326;
+      --muted: #5b7067;
+      --brand: #3F8E6D;
+      --brand-dark: #2f6a52;
+      --brand-soft: rgba(63,142,109,0.12);
+      --line: rgba(16,51,38,0.10);
+      --shadow: 0 20px 60px rgba(35, 70, 54, 0.10);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(63,142,109,0.14), transparent 30%),
+        radial-gradient(circle at top right, rgba(63,142,109,0.08), transparent 28%),
+        linear-gradient(180deg, #f9fcfa 0%, #eef6f1 100%);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(246,251,248,0.65);
+      border-bottom: 1px solid rgba(16,51,38,0.06);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.05rem;
+    }
+
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #4ca57f, #2f6a52);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.05rem;
+      box-shadow: 0 12px 28px rgba(63,142,109,0.25);
+      flex: 0 0 auto;
+      overflow: hidden;
+    }
+
+    .brand-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: var(--brand-dark); }
+
+    .hero {
+      padding: 44px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+      padding: 30px 0 12px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(63,142,109,0.10);
+      color: var(--brand-dark);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(145deg, var(--brand), var(--brand-dark));
+      color: white;
+      box-shadow: 0 16px 30px rgba(63,142,109,0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.72);
+      border-color: rgba(16,51,38,0.08);
+      color: var(--text);
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .trust-pill {
+      background: rgba(255,255,255,0.68);
+      border: 1px solid rgba(16,51,38,0.08);
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 34px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.72));
+      border: 1px solid rgba(16,51,38,0.08);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      inset: -40% -20% auto auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(63,142,109,0.18), transparent 64%);
+      pointer-events: none;
+    }
+
+    .phone-frame {
+      border-radius: 28px;
+      background: linear-gradient(180deg, #18372c, #10281f);
+      padding: 14px;
+      height: 100%;
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.82rem;
+      padding: 0 4px;
+    }
+
+    .mock-screen {
+      flex: 1;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top, rgba(76,165,127,0.25), transparent 35%),
+        linear-gradient(180deg, #f9fffc, #edf7f1 70%, #e9f3ee 100%);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .mock-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .mock-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #4ca57f, #2f6a52);
+      display: grid;
+      place-items: center;
+      color: white;
+      box-shadow: 0 12px 28px rgba(63,142,109,0.25);
+    }
+
+    .timer-ring {
+      width: min(92%, 280px);
+      aspect-ratio: 1;
+      margin: 8px auto 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,0.95) 0 56%, transparent 57%),
+        conic-gradient(from 220deg, var(--brand) 0 58%, rgba(63,142,109,0.18) 58% 100%);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 14px rgba(255,255,255,0.64);
+    }
+
+    .timer-inner {
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+    }
+
+    .timer-inner .time {
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      line-height: 1;
+    }
+
+    .timer-inner .label {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .mock-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 2px;
+    }
+
+    .mini-card {
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(16,51,38,0.08);
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .progress {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(63,142,109,0.12);
+      overflow: hidden;
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--brand), var(--brand-dark));
+      width: 72%;
+    }
+
+    .section {
+      padding: 44px 0;
+    }
+
+    .section-title {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 70ch;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      backdrop-filter: blur(12px);
+    }
+
+    .feature-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: var(--brand-soft);
+      display: grid;
+      place-items: center;
+      color: var(--brand-dark);
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+      letter-spacing: -0.03em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .shot {
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .shot-frame {
+      aspect-ratio: 9 / 19.5;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(63,142,109,0.08), rgba(63,142,109,0.02)),
+        #fff;
+      border: 1px dashed rgba(63,142,109,0.35);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .shot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .shot-caption {
+      margin-top: 12px;
+    }
+
+    .shot-caption strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .shot-caption span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .faq details {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .faq details + details { margin-top: 14px; }
+
+    .faq summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .faq summary::-webkit-details-marker { display: none; }
+
+    .faq p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 12px 0 0;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: #0f1f18;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.08);
+      min-width: 220px;
+    }
+
+    .store-badge .small { font-size: 0.72rem; opacity: 0.7; display: block; }
+    .store-badge .big { font-size: 1.02rem; font-weight: 700; }
+    .store-badge .icon { font-size: 1.4rem; }
+
+    footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+    }
+
+    .footer-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(16,51,38,0.08);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a:hover { color: var(--brand-dark); }
+
+    .note {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .split, .grid-3, .gallery { grid-template-columns: 1fr; }
+      .phone-frame { min-height: 520px; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(var(--max), calc(100% - 24px)); }
+      .hero { padding-top: 26px; }
+      .cta-row, .badge-row, .trust-row { flex-direction: column; }
+      .btn, .store-badge { width: 100%; }
+      .mock-cards { grid-template-columns: 1fr; }
+      .phone-frame { min-height: 480px; padding: 12px; }
+      h1 { font-size: clamp(2.2rem, 14vw, 3.8rem); }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Pomorix Home">
+        <span class="brand-badge">
+          <!-- Replace with your logo later: assets/logo.png -->
+          P
+        </span>
+        <span>Pomorix</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#faq">FAQ</a>
+        <a href="#support">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Minimal focus • Maximum momentum</span>
+          <h1>Focus better.<br/>Work smarter.<br/>Build momentum.</h1>
+          <p>
+            Pomorix is a clean Pomodoro timer app designed for deep work, study sessions, coding, and daily productivity.
+            Start fast, stay in rhythm, and build consistency with a beautiful distraction-free experience.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.pomorix.app" target="_blank" rel="noopener noreferrer">
+              Get it on Google Play
+            </a>
+            <a class="btn btn-secondary" href="#screenshots">See screenshots</a>
+          </div>
+
+          <div class="trust-row" aria-label="App highlights">
+            <span class="trust-pill">One-tap focus sessions</span>
+            <span class="trust-pill">Custom work & break lengths</span>
+            <span class="trust-pill">Stats, streaks & goals</span>
+            <span class="trust-pill">Offline friendly</span>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="App preview">
+          <div class="phone-frame">
+            <div class="phone-top">
+              <span>Pomorix Preview</span>
+              <span>Focus Mode</span>
+            </div>
+            <div class="mock-screen">
+              <div class="mock-brand">
+                <div class="mock-icon">
+                  <!-- Replace with logo image later if needed -->
+                  ⏱
+                </div>
+                <div>
+                  Pomorix
+                  <div style="font-size:0.84rem;color:var(--muted);font-weight:600;margin-top:3px;">Pomodoro Timer App</div>
+                </div>
+              </div>
+
+              <div class="timer-ring">
+                <div class="timer-inner">
+                  <div class="time">25:00</div>
+                  <div class="label">Focus session ready</div>
+                </div>
+              </div>
+
+              <div class="mock-cards">
+                <div class="mini-card">
+                  <strong>Focus streak</strong>
+                  <div class="progress"><span style="width:78%"></span></div>
+                  <div style="margin-top:8px;color:var(--muted);font-size:0.9rem;">7 days in a row</div>
+                </div>
+                <div class="mini-card">
+                  <strong>Today's progress</strong>
+                  <div class="progress"><span style="width:62%"></span></div>
+                  <div style="margin-top:8px;color:var(--muted);font-size:0.9rem;">3 sessions completed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Everything you need to stay focused</h2>
+          <p>
+            Build a landing page that feels premium, honest, and conversion-friendly. These feature blocks are based on the app’s Play Store positioning and can be refined as you update the product.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="feature-icon">⚡</div>
+            <h3>One-tap Pomodoro timer</h3>
+            <p>Launch focus sessions instantly and let Pomorix guide your work and break cycles with a calm, uncluttered interface.</p>
+          </article>
+          <article class="card">
+            <div class="feature-icon">🎯</div>
+            <h3>Focus pulse game</h3>
+            <p>Make concentration feel rewarding with a simple challenge that keeps your attention engaged without adding noise.</p>
+          </article>
+          <article class="card">
+            <div class="feature-icon">📊</div>
+            <h3>Stats that motivate</h3>
+            <p>Track daily, weekly, and monthly focus time, then measure your streaks and goals to build consistency over time.</p>
+          </article>
+          <article class="card">
+            <div class="feature-icon">🎵</div>
+            <h3>Ambient sound support</h3>
+            <p>Stay in the zone with built-in focus sounds and music that help create a productive atmosphere.</p>
+          </article>
+          <article class="card">
+            <div class="feature-icon">🗂️</div>
+            <h3>Focus categories</h3>
+            <p>Organize your sessions around work, study, coding, reading, or any routine that fits your day.</p>
+          </article>
+          <article class="card">
+            <div class="feature-icon">📴</div>
+            <h3>Offline and lightweight</h3>
+            <p>Use the app without an account and without friction. It is built to feel fast, dependable, and easy to return to daily.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Screenshot gallery</h2>
+          <p>
+            Drop your Play Store screenshots into the <code>assets</code> folder later and replace the placeholder cards below with image tags. The layout is already ready for them.
+          </p>
+        </div>
+
+        <div class="gallery">
+          <article class="shot">
+            <div class="shot-frame">Screenshot 1<br/>Homepage / Timer screen<br/>Replace with <code>assets/screenshot-1.png</code></div>
+            <div class="shot-caption">
+              <strong>Focused home screen</strong>
+              <span>Make the first impression clean, calm, and instantly understandable.</span>
+            </div>
+          </article>
+          <article class="shot">
+            <div class="shot-frame">Screenshot 2<br/>Custom session setup<br/>Replace with <code>assets/screenshot-2.png</code></div>
+            <div class="shot-caption">
+              <strong>Custom timer controls</strong>
+              <span>Show how users can change work and break durations to match their routine.</span>
+            </div>
+          </article>
+          <article class="shot">
+            <div class="shot-frame">Screenshot 3<br/>Progress stats<br/>Replace with <code>assets/screenshot-3.png</code></div>
+            <div class="shot-caption">
+              <strong>Progress and streaks</strong>
+              <span>Highlight the productivity insights that help users stay committed.</span>
+            </div>
+          </article>
+          <article class="shot">
+            <div class="shot-frame">Screenshot 4<br/>Ambient sounds / categories<br/>Replace with <code>assets/screenshot-4.png</code></div>
+            <div class="shot-caption">
+              <strong>Personalized focus tools</strong>
+              <span>Let the screenshot gallery communicate depth without making the page feel cluttered.</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="card">
+          <div class="section-title" style="margin-bottom:16px;">
+            <h2>Built for a premium app-store feel</h2>
+            <p>
+              This section helps the site feel more trustworthy and polished. You can keep it exactly like this or tighten the copy once your final screenshots are ready.
+            </p>
+          </div>
+          <div class="badge-row">
+            <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.pomorix.app" target="_blank" rel="noopener noreferrer">
+              <span class="icon">▶</span>
+              <span>
+                <span class="small">AVAILABLE ON</span>
+                <span class="big">Google Play</span>
+              </span>
+            </a>
+            <a class="store-badge" href="privacy-policy.html">
+              <span class="icon">🔒</span>
+              <span>
+                <span class="small">READ OUR</span>
+                <span class="big">Privacy Policy</span>
+              </span>
+            </a>
+          </div>
+          <p class="note" style="margin-top:18px;">
+            Support: <a href="mailto:pomorixapp@gmail.com">pomorixapp@gmail.com</a><br/>
+            Replace the placeholder logo, screenshot files, and store badge image once you upload them to the repo.
+          </p>
+        </div>
+
+        <div id="faq" class="faq">
+          <div class="section-title" style="margin-bottom:16px;">
+            <h2>FAQ</h2>
+            <p>Keep this compact. It answers the most common questions without overwhelming the page.</p>
+          </div>
+          <details open>
+            <summary>Is Pomorix free?</summary>
+            <p>Add your real pricing answer here, or keep it simple if the app is free to download.</p>
+          </details>
+          <details>
+            <summary>Does it work offline?</summary>
+            <p>Yes. The Play listing indicates the app works offline, which is a strong trust signal for the website too.</p>
+          </details>
+          <details>
+            <summary>Do I need an account?</summary>
+            <p>No account is required. That makes the app feel lighter and faster to start using.</p>
+          </details>
+          <details>
+            <summary>Where is the privacy policy?</summary>
+            <p>The privacy policy page should live in the same GitHub Pages repo and be linked from both the website and your Play Console listing.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="support" class="section">
+      <div class="container card" style="padding: 30px;">
+        <div class="split" style="align-items:center;">
+          <div>
+            <div class="eyebrow">Ready for publishing</div>
+            <h2 style="margin-top:16px;">Ship a beautiful developer website in one push</h2>
+            <p>
+              Upload this file to your GitHub repo, turn on GitHub Pages, then replace the placeholder assets later with your real logo and screenshots.
+              The structure is already built for a polished product launch.
+            </p>
+          </div>
+          <div>
+            <div class="card" style="background:#fff; box-shadow:none;">
+              <h3 style="margin-top:0;">What to upload later</h3>
+              <p style="margin-bottom:0;">
+                <code>assets/logo.png</code><br/>
+                <code>assets/screenshot-1.png</code><br/>
+                <code>assets/screenshot-2.png</code><br/>
+                <code>assets/screenshot-3.png</code><br/>
+                <code>assets/screenshot-4.png</code><br/>
+                <code>privacy-policy.html</code>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-box">
+      <div>
+        <div class="brand" style="margin-bottom:10px;">
+          <span class="brand-badge" aria-hidden="true">P</span>
+          <span>Pomorix</span>
+        </div>
+        <div class="note">Focus better. Work smarter. Build momentum.</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://play.google.com/store/apps/details?id=com.pomorix.app" target="_blank" rel="noopener noreferrer">Google Play</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="mailto:pomorixapp@gmail.com">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
