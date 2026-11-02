@@ -1,0 +1,122 @@
+---
+{
+  "title": "The Pomodoro Technique for Programmers: Focus Without Losing Your Flow",
+  "seo_title": "Pomodoro Technique for Programmers and Developers | Pomorix",
+  "og_title": "The Pomodoro Technique for Programmers",
+  "description": "How developers can use the Pomodoro Technique without breaking flow: longer sessions, Flow mode, handling builds and code reviews, and protecting focus.",
+  "category": "focus",
+  "date": "2026-11-02",
+  "order": 19,
+  "screen": "flow-mode-dark",
+  "keywords": ["pomodoro for programmers", "pomodoro technique coding", "developer productivity", "focus timer for coding", "deep work programming"],
+  "related": ["deep-work-sessions", "flowtime-vs-pomodoro", "pomodoro-intervals"],
+  "takeaways": [
+    "Programming has a high context-loading cost, so 25-minute sessions can be too short for deep coding.",
+    "Use 50/10 or a count-up Flow timer for building and debugging; keep 25/5 for reviews, email and chores.",
+    "Leave a breadcrumb (a note or failing test) before every break so restarting is instant.",
+    "Protect sessions from chat and meetings, and track focus time by project."
+  ],
+  "faq": [
+    ["Is the Pomodoro Technique good for programming?", "Yes, with adjustments. Classic 25-minute sessions work well for code reviews, small fixes and getting started. For deep coding and debugging, longer sessions (45 to 90 minutes) or a count-up Flow timer usually work better because loading a complex problem into your head takes time."],
+    ["What should a developer do when the timer rings mid-thought?", "Finish the line or thought, then leave a breadcrumb: a short comment, a note or a failing test that describes the next step. Restarting after the break then takes seconds instead of minutes."],
+    ["How do I use breaks while waiting for a build or test run?", "Short waits are a trap for context switching. If a build takes a few minutes, use it to review your own diff, write the next test or stretch, rather than opening chat or social media."],
+    ["How many hours of focused coding a day is realistic?", "Many developers find 3 to 4 hours of genuinely deep coding a day is a strong, sustainable amount. The rest of the day naturally goes to reviews, meetings, communication and lighter tasks."]
+  ]
+}
+---
+<p>Ask developers about the Pomodoro Technique and you'll hear two reactions. Some swear by it. Others say: “The alarm rings just as I've got the whole system loaded in my head. No thanks.”</p>
+
+<p>Both are right. Programming has a unique focus profile, and the classic 25/5 rhythm needs some tuning to fit it. Here's how to make Pomodoro work for coding without breaking your flow.</p>
+
+<h2>Why programming is different</h2>
+
+<p>Programming has a <strong>high context-loading cost</strong>. Before you can make progress, you have to hold a lot in your head: the data flow, the function you're changing, the edge cases, the bug's symptoms. Getting there can take 10 to 20 minutes. An interruption (a chat ping, a meeting, an alarm) can wipe that context instantly.</p>
+
+<p>That's why interruptions are so expensive for developers, and why a timer that interrupts too often can be counterproductive. But the opposite problem is just as real: hours drifting between Slack, email, pull requests and “quick” fixes, with no real deep work done.</p>
+
+<h2>Match the timer to the type of work</h2>
+
+<table>
+  <thead><tr><th>Work</th><th>Suggested timer</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td>New feature, complex refactor</td><td>50/10 or Flow</td><td>Needs long context-loading</td></tr>
+    <tr><td>Debugging a hard problem</td><td>Flow with a 90-min nudge</td><td>Unpredictable; easy to lose track of time</td></tr>
+    <tr><td>Code review</td><td>25/5</td><td>Bounded, benefits from fresh eyes</td></tr>
+    <tr><td>Writing docs or tests</td><td>25/5 or 50/10</td><td>Often avoided; timer helps start</td></tr>
+    <tr><td>Email, chat, tickets</td><td>25/5 batches</td><td>Keeps shallow work contained</td></tr>
+    <tr><td>Learning a new language or framework</td><td>25/5</td><td>Short sessions with breaks help it stick</td></tr>
+  </tbody>
+</table>
+
+<p>Not sure about lengths? Compare them in <a href="../pomodoro-intervals/">25/5, 50/10 or 90 minutes</a>.</p>
+
+<aside class="app-callout" data-screen="categories">
+<h3>A default length per kind of work</h3>
+<p>Create Pomorix categories like Coding, Reviews and Learning, each with its own icon, colour and default length. Tap Coding and the timer is set to 50; tap Reviews and it's 25.</p>
+</aside>
+
+<h2>Use Flow mode for deep coding</h2>
+
+<p>A count-up timer is often the better tool for deep programming work. You start it, code until your focus naturally dips (or you hit a natural stopping point, like a passing test), then take a break proportional to the time you worked. You keep the benefits of tracked, intentional focus without an alarm in the middle of a tricky function. Read <a href="../flowtime-vs-pomodoro/">Flowtime vs Pomodoro</a> for the details.</p>
+
+<p>The risk with long coding sessions is losing hours without moving, drinking or eating. A gentle nudge after 60 or 90 minutes solves that.</p>
+
+<aside class="app-callout" data-screen="flow-mode-dark">
+<h3>Flow mode for developers</h3>
+<p>Pomorix Flow counts up while you code and earns you a break that matches your focus. An optional nudge after 45, 60, 90 or 120 minutes reminds you to stretch, without killing your session.</p>
+</aside>
+
+<h2>Leave a breadcrumb before every break</h2>
+
+<p>The single best habit for coding with timers: before you stop, leave yourself a note about the exact next step. Options:</p>
+<ul>
+  <li>A <code>// NEXT:</code> comment where you stopped.</li>
+  <li>A <strong>failing test</strong> that describes the next behaviour to implement.</li>
+  <li>One line in your notes: “check why the cache key ignores locale”.</li>
+</ul>
+<p>When you come back, you don't have to rebuild context from scratch. You're productive within a minute.</p>
+
+<h2>Don't let builds and test runs become context switches</h2>
+
+<p>Waiting for a build, deploy or test suite is a classic trap: you open chat “for a second” and lose the next twenty minutes. Instead:</p>
+<ul>
+  <li>Review your own diff while you wait.</li>
+  <li>Write the next test or sketch the next function.</li>
+  <li>Stretch and look away from the screen.</li>
+  <li>If it takes more than a few minutes, treat it as your break.</li>
+</ul>
+
+<h2>Protect your sessions</h2>
+
+<ul>
+  <li><strong>Set chat to “do not disturb”</strong> during focus sessions and say so in your status.</li>
+  <li><strong>Batch communication</strong>: check messages between sessions, not during.</li>
+  <li><strong>Block deep work on your calendar</strong>, ideally in the morning before meetings start.</li>
+  <li><strong>Turn off phone notifications</strong>, or let your timer do it automatically.</li>
+  <li><strong>Close unrelated tabs</strong>: documentation for this task only.</li>
+</ul>
+
+<aside class="app-callout" data-screen="timer-pomodoro">
+<h3>Silence your phone automatically</h3>
+<p>Pomorix can turn on Do Not Disturb when a focus session starts and turn it off when it ends. Combine it with the <strong>I got distracted</strong> counter to see how often you're being pulled away.</p>
+</aside>
+
+<h2>A sample developer day</h2>
+
+<ol>
+  <li><strong>9:00</strong> One 25-minute session: plan the day, triage messages.</li>
+  <li><strong>9:30–11:30</strong> Deep block: feature work in Flow, with a break at a natural stopping point.</li>
+  <li><strong>11:30</strong> 25-minute session: code reviews.</li>
+  <li><strong>Afternoon</strong> Meetings and communication.</li>
+  <li><strong>15:30–16:30</strong> One 50-minute session: tests, docs or a bug fix.</li>
+  <li><strong>16:45</strong> Leave breadcrumbs for tomorrow.</li>
+</ol>
+
+<h2>Track your deep coding time</h2>
+
+<p>Developers love metrics, so measure your own focus: hours of deep coding per week, which projects get your time, your most productive hours. It's often eye-opening how little uninterrupted coding time a “busy” week contains, and it's useful evidence when you're arguing for fewer meetings. Read more in <a href="../deep-work-sessions/">how to do deep work</a>.</p>
+
+<aside class="app-callout" data-screen="insights-categories">
+<h3>Your focus data, on your phone</h3>
+<p>Pomorix shows time by category, weekly and monthly charts and your best hours, all stored on your phone. Export sessions to CSV and analyse them however you like.</p>
+</aside>

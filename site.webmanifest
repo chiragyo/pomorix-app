@@ -1,0 +1,17 @@
+{
+  "name": "Pomorix",
+  "short_name": "Pomorix",
+  "description": "Pomodoro timer and study focus app for Android.",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#f6f9f7",
+  "theme_color": "#3f8e6d",
+  "icons": [
+    { "src": "assets/img/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/img/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/img/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "related_applications": [
+    { "platform": "play", "url": "https://play.google.com/store/apps/details?id=com.pomorix.app", "id": "com.pomorix.app" }
+  ]
+}
